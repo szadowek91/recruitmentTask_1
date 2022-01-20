@@ -1,0 +1,10 @@
+Treść zadania:
+
+(być może z wykorzystaniem wyrażeń regularnych a nawet wątków czy webserwisów).
+
+Proszę stworzyć klasy i metody, których zadaniem będzie odwrócić wyrazowy szyk zdania (wprowadzonego z zewnątrz),
+policzyć procentowy udział znaków [wielkość znaków bez znaczenia] w zadaniu,
+zgromadzić duplikaty wyrazów, wartości przechowywać w oddzielnym obiekcie (kontener danych).
+
+Zastosować utworzoną klasę z poprzedniego zadania w nowym projekcie,
+przekazać dane do "kontenera danych" i wypełnić go odpowiedziami, wyświetlić.
