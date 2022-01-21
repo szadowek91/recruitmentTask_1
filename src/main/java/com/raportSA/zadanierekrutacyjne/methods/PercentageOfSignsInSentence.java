@@ -1,4 +1,4 @@
-package com.raportSA.zadanierekrutacyjne.service;
+package com.raportSA.zadanierekrutacyjne.methods;
 
 import com.raportSA.zadanierekrutacyjne.utils.ConsoleInput;
 
@@ -11,7 +11,7 @@ public class PercentageOfSignsInSentence {
 
     private Long allCharsInSentence;
 
-    public void countSignsUsePercentage() {
+    public Long countSignsUsePercentage() {
         System.out.println("Wprowadź zdanie: ");
         String userInput = ConsoleInput.getInputUserString();
         allCharsInSentence = userInput.subSequence(0, userInput.length()).chars().spliterator().estimateSize();
@@ -25,7 +25,7 @@ public class PercentageOfSignsInSentence {
         Long desiredSigns = signs.stream().filter(signFilter).count();
         Double percentageOfSignsInSentence = (double) desiredSigns * 100 / (double) allCharsInSentence;
 
-        System.out.println("Po zaokrągleniu w wyrażeniu znajduje się : " + Math.round(percentageOfSignsInSentence) + " % szukanych (\"" + searchedSign + "\") znaków/wyrażeń");
+        return Math.round(percentageOfSignsInSentence);
 
     }
 
