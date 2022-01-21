@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class RevertedSentence {
 
     public String setRevertedSentence() {
-        List<String> sentenceToRevert = Arrays.asList(ConsoleInput.getInputUserString().split(" "));
+        List<String> sentenceToRevert = ConsoleInput.splitString();
         System.out.println("Before reversion: " + sentenceToRevert);
         Collections.reverse(sentenceToRevert);
         System.out.println("After reversion: " + sentenceToRevert);

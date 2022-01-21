@@ -1,31 +1,24 @@
 package com.raportSA.zadanierekrutacyjne.methods;
 
+import com.raportSA.zadanierekrutacyjne.utils.ConsoleInput;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DuplicatedWordsFinder {
 
-    public HashMap<String, Integer> duplicatedWordsMap = new HashMap<>();
+    public String findAndCountWords() {
+        List<String> splittedWords = ConsoleInput.splitString();
 
-    public void fillDuplicatedWordsMap() {
-        duplicatedWordsMap.put(wordFromList(),repeatingCounter());
-        duplicatedWordsMap.put("pierwsze", 1);
-        System.out.println(duplicatedWordsMap);
-    }
+        Map<String, Integer> result = new HashMap<>();
+        for (String s : splittedWords) {
 
-    private String wordFromList(){ //tu będzie logika na rozdzielanie Stringa/zadanego tekstu (może pliku.txt) i wsadzanie w wartość key
-        String word = "Hello";
-        return word;
-    }
-
-    private Integer repeatingCounter(){ // tu będzie logika na zliczanie powtórzonych wartości key i wstawienie Integera w miejsce value
-        Integer count = 1;
-        return count;
-    }
-
-    @Override
-    public String toString() {
-        return "DuplicatedWordsFinder{" +
-                "duplicatedWordsMap=" + duplicatedWordsMap +
-                '}';
+            if (result.containsKey(s)) {
+                result.put(s, result.get(s) + 1);
+            } else {
+                result.put(s, 1);
+            }
+        }
+        return String.valueOf(result);
     }
 }

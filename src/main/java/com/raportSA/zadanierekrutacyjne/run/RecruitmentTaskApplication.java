@@ -1,5 +1,6 @@
 package com.raportSA.zadanierekrutacyjne.run;
 
+import com.raportSA.zadanierekrutacyjne.methods.DuplicatedWordsFinder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,4 +10,5 @@ public class RecruitmentTaskApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RecruitmentTaskApplication.class, args);
 	}
+
 }
