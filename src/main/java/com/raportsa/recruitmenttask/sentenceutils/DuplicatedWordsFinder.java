@@ -1,18 +1,15 @@
-package com.raportsa.zadanierekrutacyjne.methods;
+package com.raportsa.recruitmenttask.sentenceutils;
 
-import com.raportsa.zadanierekrutacyjne.utils.ConsoleInput;
-import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-
+@Component
 public class DuplicatedWordsFinder {
 
-    @Bean
-    public String findAndCountWords() {
-        List<String> splittedWords = ConsoleInput.splitString();
+    public Map<String, Integer> findAndCountWords(String input) {
+        String[] splittedWords = input.split(" ");
 
         Map<String, Integer> result = new HashMap<>();
         for (String s : splittedWords) {
@@ -23,6 +20,6 @@ public class DuplicatedWordsFinder {
                 result.put(s, 1);
             }
         }
-        return String.valueOf(result);
+        return result;
     }
 }

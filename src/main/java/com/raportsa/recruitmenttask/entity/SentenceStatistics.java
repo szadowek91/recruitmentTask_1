@@ -1,9 +1,7 @@
-package com.raportsa.zadanierekrutacyjne.entity;
+package com.raportsa.recruitmenttask.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Map;
 
 @Entity
 public class SentenceStatistics {
@@ -15,9 +13,10 @@ public class SentenceStatistics {
     private String userInput;
     private String revertedSentence;
     private Long percentageOfSignsInSentence;
-    private String duplicatedWords;
+    @ElementCollection
+    private Map<String, Integer> duplicatedWords;
 
-    public SentenceStatistics(Long id, String userInput, String revertedSentence, Long percentageOfSignsInSentence, String duplicatedWords) {
+    public SentenceStatistics(Long id, String userInput, String revertedSentence, Long percentageOfSignsInSentence, Map<String, Integer> duplicatedWords) {
         this.id = id;
         this.userInput = userInput;
         this.revertedSentence = revertedSentence;
@@ -75,11 +74,11 @@ public class SentenceStatistics {
         this.percentageOfSignsInSentence = percentageOfSignsInSentence;
     }
 
-    public String getDuplicatedWords() {
+    public Map<String, Integer> getDuplicatedWords() {
         return duplicatedWords;
     }
 
-    public void setDuplicatedWords(String duplicatedWords) {
+    public void setDuplicatedWords(Map<String, Integer> duplicatedWords) {
         this.duplicatedWords = duplicatedWords;
     }
 }

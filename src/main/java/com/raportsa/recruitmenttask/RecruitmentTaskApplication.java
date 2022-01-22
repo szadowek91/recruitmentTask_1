@@ -1,4 +1,4 @@
-package com.raportsa.zadanierekrutacyjne.run;
+package com.raportsa.recruitmenttask;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

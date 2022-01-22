@@ -1,7 +1,7 @@
-package com.raportsa.zadanierekrutacyjne.repository;
+package com.raportsa.recruitmenttask.repository;
 
 
-import com.raportsa.zadanierekrutacyjne.entity.SentenceStatistics;
+import com.raportsa.recruitmenttask.entity.SentenceStatistics;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

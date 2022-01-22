@@ -1,7 +1,7 @@
-package com.raportsa.zadanierekrutacyjne.api;
+package com.raportsa.recruitmenttask.api;
 
-import com.raportsa.zadanierekrutacyjne.entity.SentenceStatistics;
-import com.raportsa.zadanierekrutacyjne.manager.SentenceManager;
+import com.raportsa.recruitmenttask.entity.SentenceStatistics;
+import com.raportsa.recruitmenttask.manager.SentenceManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,8 +29,8 @@ public class SentenceApi {
     }
 
     @PostMapping
-    public SentenceStatistics addSentence(@RequestBody SentenceStatistics sentenceStatistics) {
-        return sentenceManager.save(sentenceStatistics);
+    public SentenceStatistics addSentence(@RequestBody SentenceInput sentenceInput, SearchedSignsInput searchedSignsInput) {
+        return sentenceManager.process(sentenceInput, searchedSignsInput);
     }
 
     @PutMapping

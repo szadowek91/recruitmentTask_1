@@ -1,4 +1,4 @@
-package com.raportsa.zadanierekrutacyjne.utils;
+package com.raportsa.recruitmenttask.generalutils;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
