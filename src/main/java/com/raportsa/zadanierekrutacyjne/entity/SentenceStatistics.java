@@ -1,4 +1,4 @@
-package com.raportSA.zadanierekrutacyjne.entity;
+package com.raportsa.zadanierekrutacyjne.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

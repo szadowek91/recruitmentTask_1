@@ -1,16 +1,19 @@
-package com.raportSA.zadanierekrutacyjne.methods;
+package com.raportsa.zadanierekrutacyjne.methods;
 
-import com.raportSA.zadanierekrutacyjne.utils.ConsoleInput;
+import com.raportsa.zadanierekrutacyjne.utils.ConsoleInput;
+import org.springframework.context.annotation.Bean;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
+
 public class PercentageOfSignsInSentence {
 
     private Long allCharsInSentence;
 
+    @Bean
     public Long countSignsUsePercentage() {
         System.out.println("Wprowadź zdanie: ");
         String userInput = ConsoleInput.getInputUserString();

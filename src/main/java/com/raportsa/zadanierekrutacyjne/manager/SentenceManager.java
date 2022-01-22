@@ -1,7 +1,7 @@
-package com.raportSA.zadanierekrutacyjne.manager;
+package com.raportsa.zadanierekrutacyjne.manager;
 
-import com.raportSA.zadanierekrutacyjne.entity.SentenceStatistics;
-import com.raportSA.zadanierekrutacyjne.repository.SentenceRepo;
+import com.raportsa.zadanierekrutacyjne.entity.SentenceStatistics;
+import com.raportsa.zadanierekrutacyjne.repository.SentenceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +17,20 @@ public class SentenceManager {
         this.sentenceRepo = sentenceRepo;
     }
 
-    public Optional<SentenceStatistics> findById(Long id){
+    public Optional<SentenceStatistics> findById(Long id) {
         return sentenceRepo.findById(id);
     }
 
-    public Iterable<SentenceStatistics> findAll(){
+    public Iterable<SentenceStatistics> findAll() {
         return sentenceRepo.findAll();
     }
-    public SentenceStatistics save(SentenceStatistics sentenceStatistics){
+
+    public SentenceStatistics save(SentenceStatistics sentenceStatistics) {
         return sentenceRepo.save(sentenceStatistics);
     }
-    public void deleteById(Long id){
+
+    public void deleteById(Long id) {
         sentenceRepo.deleteById(id);
     }
+
 }

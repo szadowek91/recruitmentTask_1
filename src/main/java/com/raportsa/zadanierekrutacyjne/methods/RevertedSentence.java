@@ -1,8 +1,8 @@
-package com.raportSA.zadanierekrutacyjne.methods;
+package com.raportsa.zadanierekrutacyjne.methods;
 
-import com.raportSA.zadanierekrutacyjne.utils.ConsoleInput;
+import com.raportsa.zadanierekrutacyjne.utils.ConsoleInput;
+import org.springframework.context.annotation.Bean;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class RevertedSentence {
 
+    @Bean
     public String setRevertedSentence() {
         List<String> sentenceToRevert = ConsoleInput.splitString();
         System.out.println("Before reversion: " + sentenceToRevert);

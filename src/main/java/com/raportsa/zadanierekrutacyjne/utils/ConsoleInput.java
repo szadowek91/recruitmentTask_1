@@ -1,4 +1,4 @@
-package com.raportSA.zadanierekrutacyjne.utils;
+package com.raportsa.zadanierekrutacyjne.utils;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -56,7 +56,7 @@ public class ConsoleInput {
         return result;
     }
 
-    public static List<String> splitString(){
+    public static List<String> splitString() {
         List<String> sentenceToSplit = Arrays.asList(ConsoleInput.getInputUserString().split(" "));
         return sentenceToSplit;
     }
