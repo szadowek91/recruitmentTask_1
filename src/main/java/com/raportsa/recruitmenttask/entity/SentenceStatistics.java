@@ -13,7 +13,7 @@ public class SentenceStatistics {
     private String userInput;
     private String revertedSentence;
     @ElementCollection
-    private Map<String,Double> percentageOfSignsInSentence;
+    private Map<String, Double> percentageOfSignsInSentence;
     @ElementCollection
     private Map<String, Integer> duplicatedWords;
 
@@ -67,7 +67,7 @@ public class SentenceStatistics {
         this.revertedSentence = revertedSentence;
     }
 
-    public Map<String,Double> getPercentageOfSignsInSentence() {
+    public Map<String, Double> getPercentageOfSignsInSentence() {
         return percentageOfSignsInSentence;
     }
 
