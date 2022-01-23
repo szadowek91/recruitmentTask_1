@@ -46,6 +46,7 @@ public class SentenceManager {
     public SentenceStatistics process(SentenceInput sentenceInput) {
         String input = sentenceInput.getInput();
         SentenceStatistics sentenceStatistics = new SentenceStatistics();
+//        sentenceStatistics.setId(sentenceStatistics.getId()); ???
         sentenceStatistics.setUserInput(input);
         sentenceStatistics.setRevertedSentence(sentenceReverser.reverse(input));
         sentenceStatistics.setDuplicatedWords(duplicatedWordsFinder.findAndCountWords(input));

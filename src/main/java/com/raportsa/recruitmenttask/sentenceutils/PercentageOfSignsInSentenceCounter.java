@@ -2,6 +2,7 @@ package com.raportsa.recruitmenttask.sentenceutils;
 
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,25 +16,28 @@ public class PercentageOfSignsInSentenceCounter {
 //
 
 
-        public Map<String, Double> searchedSigns(String input) {
+    public Map<String, Double> searchedSigns(String input) {
 
-            char[] splittetChars = input.toCharArray();
+        String [] stringArray = input.split("");
 
-            Map<String, Double> result = new HashMap<>();
-            for (Character s : splittetChars) {
-                allCharsInSentence = input.subSequence(0, input.length()).chars().spliterator().estimateSize();
-                Double percentageOfSignsInSentence = (double) s * 100 / (double) allCharsInSentence;
+        Map<String, Double> result = new HashMap<>();
+        for (String s : stringArray) {
 
-                if (result.containsKey(s)) {
-                    result.put(s.toString(), result.get(s) + percentageOfSignsInSentence);
-                } else {
-                    result.put(s.toString(), percentageOfSignsInSentence);
-                }
+            if (result.containsKey(s)) {
+                result.put(s, result.get(s) + 1.0);
+            } else {
+                result.put(s, 1.0);
             }
 
+            allCharsInSentence = input.subSequence(0, input.length()).chars().spliterator().estimateSize();
 
-            return result;
+            Double percentageOfSignsInSentence = (result.get(s) / (double) allCharsInSentence) *100;
+
+            result.put(s,percentageOfSignsInSentence);
         }
+
+        return result;
+    }
 
 
 //        Predicate<String> signFilter = Pattern.compile(searchedSigns).asPredicate();

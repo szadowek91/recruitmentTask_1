@@ -11,9 +11,8 @@ public class SentenceReverser {
 
 
     public String reverse(String input) {
-        String[] splittedWords = input.split(" ");
-        Collections.reverse(List.of(splittedWords));
-
-        return String.valueOf(Arrays.stream(splittedWords).distinct());
+        List<String> words = Arrays.asList(input.split(" "));
+        Collections.reverse(words);
+        return String.join(" ", words);
     }
 }
