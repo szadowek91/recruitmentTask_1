@@ -1,8 +1,8 @@
 package com.raportsa.recruitmenttask.manager;
 
-import com.raportsa.recruitmenttask.api.SentenceInput;
-import com.raportsa.recruitmenttask.entity.SentenceStatistics;
-import com.raportsa.recruitmenttask.repository.SentenceRepo;
+import com.raportsa.recruitmenttask.api.SentenceInputController;
+import com.raportsa.recruitmenttask.entity.SentenceStatisticsPatternForDB;
+import com.raportsa.recruitmenttask.repository.SentenceRepository;
 import com.raportsa.recruitmenttask.sentenceutils.DuplicatedWordsFinder;
 import com.raportsa.recruitmenttask.sentenceutils.PercentageOfSignsInSentenceCounter;
 import com.raportsa.recruitmenttask.sentenceutils.SentenceReverser;
@@ -14,43 +14,43 @@ import java.util.Optional;
 @Service
 public class SentenceManager {
 
-    private final SentenceRepo sentenceRepo;
+    private final SentenceRepository sentenceRepository;
     private final DuplicatedWordsFinder duplicatedWordsFinder;
     private final SentenceReverser sentenceReverser;
     private final PercentageOfSignsInSentenceCounter signsCalculator;
 
     @Autowired
-    public SentenceManager(SentenceRepo sentenceRepo, DuplicatedWordsFinder duplicatedWordsFinder, SentenceReverser sentenceReverser, PercentageOfSignsInSentenceCounter signsCalculator) {
-        this.sentenceRepo = sentenceRepo;
+    public SentenceManager(SentenceRepository sentenceRepository, DuplicatedWordsFinder duplicatedWordsFinder, SentenceReverser sentenceReverser, PercentageOfSignsInSentenceCounter signsCalculator) {
+        this.sentenceRepository = sentenceRepository;
         this.duplicatedWordsFinder = duplicatedWordsFinder;
         this.sentenceReverser = sentenceReverser;
         this.signsCalculator = signsCalculator;
     }
 
-    public Optional<SentenceStatistics> findById(Long id) {
-        return sentenceRepo.findById(id);
+    public Optional<SentenceStatisticsPatternForDB> findById(Long id) {
+        return sentenceRepository.findById(id);
     }
 
-    public Iterable<SentenceStatistics> findAll() {
-        return sentenceRepo.findAll();
+    public Iterable<SentenceStatisticsPatternForDB> findAll() {
+        return sentenceRepository.findAll();
     }
 
-    public SentenceStatistics save(SentenceStatistics sentenceStatistics) {
-        return sentenceRepo.save(sentenceStatistics);
+    public SentenceStatisticsPatternForDB save(SentenceStatisticsPatternForDB sentenceStatisticsPatternForDB) {
+        return sentenceRepository.save(sentenceStatisticsPatternForDB);
     }
 
     public void deleteById(Long id) {
-        sentenceRepo.deleteById(id);
+        sentenceRepository.deleteById(id);
     }
 
-    public SentenceStatistics process(SentenceInput sentenceInput) {
-        String input = sentenceInput.getInput();
-        SentenceStatistics sentenceStatistics = new SentenceStatistics();
-        sentenceStatistics.setUserInput(input);
-        sentenceStatistics.setRevertedSentence(sentenceReverser.reverse(input));
-        sentenceStatistics.setDuplicatedWords(duplicatedWordsFinder.findAndCountWords(input));
-        sentenceStatistics.setPercentageOfSignsInSentence(signsCalculator.searchedSigns(input));
-        save(sentenceStatistics);
-        return sentenceStatistics;
+    public SentenceStatisticsPatternForDB process(SentenceInputController sentenceInputController) {
+        String input = sentenceInputController.getInput();
+        SentenceStatisticsPatternForDB sentenceStatisticsPatternForDB = new SentenceStatisticsPatternForDB();
+        sentenceStatisticsPatternForDB.setUserInput(input);
+        sentenceStatisticsPatternForDB.setRevertedSentence(sentenceReverser.reverse(input));
+        sentenceStatisticsPatternForDB.setDuplicatedWords(duplicatedWordsFinder.findAndCountWords(input));
+        sentenceStatisticsPatternForDB.setPercentageOfSignsInSentence(signsCalculator.searchedSigns(input));
+        save(sentenceStatisticsPatternForDB);
+        return sentenceStatisticsPatternForDB;
     }
 }

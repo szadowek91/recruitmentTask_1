@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Map;
 
 @Entity
-public class SentenceStatistics {
+public class SentenceStatisticsPatternForDB {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class SentenceStatistics {
     @ElementCollection
     private Map<String, Integer> duplicatedWords;
 
-    public SentenceStatistics(Long id, String userInput, String revertedSentence, Map<String, Double> percentageOfSignsInSentence, Map<String, Integer> duplicatedWords) {
+    public SentenceStatisticsPatternForDB(Long id, String userInput, String revertedSentence, Map<String, Double> percentageOfSignsInSentence, Map<String, Integer> duplicatedWords) {
         this.id = id;
         this.userInput = userInput;
         this.revertedSentence = revertedSentence;
@@ -25,11 +25,11 @@ public class SentenceStatistics {
         this.duplicatedWords = duplicatedWords;
     }
 
-    public SentenceStatistics(String userInput) {
+    public SentenceStatisticsPatternForDB(String userInput) {
         this.userInput = userInput;
     }
 
-    public SentenceStatistics() {
+    public SentenceStatisticsPatternForDB() {
     }
 
     @Override

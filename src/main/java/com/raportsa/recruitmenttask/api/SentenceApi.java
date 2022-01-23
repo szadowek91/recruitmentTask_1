@@ -1,6 +1,6 @@
 package com.raportsa.recruitmenttask.api;
 
-import com.raportsa.recruitmenttask.entity.SentenceStatistics;
+import com.raportsa.recruitmenttask.entity.SentenceStatisticsPatternForDB;
 import com.raportsa.recruitmenttask.manager.SentenceManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,23 +19,23 @@ public class SentenceApi {
     }
 
     @GetMapping("/all")
-    public Iterable<SentenceStatistics> getAll() {
+    public Iterable<SentenceStatisticsPatternForDB> getAll() {
         return sentenceManager.findAll();
     }
 
     @GetMapping
-    public Optional<SentenceStatistics> getById(@RequestParam Long index) {
+    public Optional<SentenceStatisticsPatternForDB> getById(@RequestParam Long index) {
         return sentenceManager.findById(index);
     }
 
     @PostMapping
-    public SentenceStatistics addSentence(@RequestBody SentenceInput sentenceInput) {
-        return sentenceManager.process(sentenceInput);
+    public SentenceStatisticsPatternForDB addSentence(@RequestBody SentenceInputController sentenceInputController) {
+        return sentenceManager.process(sentenceInputController);
     }
 
     @PutMapping
-    public SentenceStatistics updateSentence(@RequestBody SentenceStatistics sentenceStatistics) {
-        return sentenceManager.save(sentenceStatistics);
+    public SentenceStatisticsPatternForDB updateSentence(@RequestBody SentenceStatisticsPatternForDB sentenceStatisticsPatternForDB) {
+        return sentenceManager.save(sentenceStatisticsPatternForDB);
     }
 
     @DeleteMapping

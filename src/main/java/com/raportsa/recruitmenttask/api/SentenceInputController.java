@@ -3,11 +3,11 @@ package com.raportsa.recruitmenttask.api;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class SentenceInput {
+public class SentenceInputController {
 
     private String input;
 
-    public SentenceInput() {
+    public SentenceInputController() {
     }
 
     public String getInput() {
