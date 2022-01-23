@@ -3,48 +3,35 @@ package com.raportsa.recruitmenttask.sentenceutils;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Component
 public class PercentageOfSignsInSentenceCounter {
 
     private Long allCharsInSentence;
 
-
-//    public Map<Character, Integer> signsCalculator(String input) {
-//
-
-
     public Map<String, Double> searchedSigns(String input) {
+        double inputLength = input.length();
 
-        String [] stringArray = input.split("");
+        Map<String, Double> percentageOfSigns = new HashMap<>();
 
-        Map<String, Double> result = new HashMap<>();
-        for (String s : stringArray) {
+        Map<String, Long> signsAmount = Arrays.stream(input.split(""))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-            if (result.containsKey(s)) {
-                result.put(s, result.get(s) + 1.0);
-            } else {
-                result.put(s, 1.0);
-            }
+        signsAmount.forEach((k,v) -> percentageOfSigns.put(k, Math.round((v / inputLength * 100) * 10) / 10.0));
 
-            allCharsInSentence = input.subSequence(0, input.length()).chars().spliterator().estimateSize();
-
-            Double percentageOfSignsInSentence = (result.get(s) / (double) allCharsInSentence) *100;
-
-            result.put(s,percentageOfSignsInSentence);
-        }
-
-        return result;
+        return percentageOfSigns.entrySet().stream()
+                .sorted(Map.Entry.<String, Double>comparingByValue().reversed())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
     }
-
 
 //        Predicate<String> signFilter = Pattern.compile(searchedSigns).asPredicate();
 //        List<String> signsList = Arrays.asList(searchedSigns);
 //        Long desiredSigns = signsList.stream().filter(signFilter).count();
-//
-//        return Math.round(percentageOfSignsInSentence);
 
-//    }
 }
