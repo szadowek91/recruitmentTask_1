@@ -9,7 +9,6 @@ import java.util.List;
 @Component
 public class SentenceReverser {
 
-
     public String reverse(String input) {
         List<String> words = Arrays.asList(input.split(" "));
         Collections.reverse(words);
