@@ -10,7 +10,7 @@ class SentenceReverserTest {
     private final SentenceReverser sentenceReverser = new SentenceReverser();
 
     @Test
-    void reverse(){
+    void reverse_inputContainsASentence_shouldReturnSameSentenceWithWordsPlaceReverted(){
         //given
         String input = "powinno zamienić szyk wyrazów od końca do początku";
         String expectedResult = "początku do końca od wyrazów szyk zamienić powinno";
