@@ -29,8 +29,8 @@ public class SentenceApi {
     }
 
     @PostMapping
-    public SentenceStatistics addSentence(@RequestBody SentenceInput sentenceInput, SearchedSignsInput searchedSignsInput) {
-        return sentenceManager.process(sentenceInput, searchedSignsInput);
+    public SentenceStatistics addSentence(@RequestBody SentenceInput sentenceInput) {
+        return sentenceManager.process(sentenceInput);
     }
 
     @PutMapping

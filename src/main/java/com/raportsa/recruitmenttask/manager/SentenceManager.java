@@ -1,6 +1,5 @@
 package com.raportsa.recruitmenttask.manager;
 
-import com.raportsa.recruitmenttask.api.SearchedSignsInput;
 import com.raportsa.recruitmenttask.api.SentenceInput;
 import com.raportsa.recruitmenttask.entity.SentenceStatistics;
 import com.raportsa.recruitmenttask.repository.SentenceRepo;
@@ -44,14 +43,13 @@ public class SentenceManager {
         sentenceRepo.deleteById(id);
     }
 
-    public SentenceStatistics process(SentenceInput sentenceInput, SearchedSignsInput searchedSignsInput) {
+    public SentenceStatistics process(SentenceInput sentenceInput) {
         String input = sentenceInput.getInput();
-        String signsInput = searchedSignsInput.getSearchedSignsInput();
         SentenceStatistics sentenceStatistics = new SentenceStatistics();
         sentenceStatistics.setUserInput(input);
         sentenceStatistics.setRevertedSentence(sentenceReverser.reverse(input));
         sentenceStatistics.setDuplicatedWords(duplicatedWordsFinder.findAndCountWords(input));
-        sentenceStatistics.setPercentageOfSignsInSentence(signsCalculator.signsCalculator(input, signsInput));
+        sentenceStatistics.setPercentageOfSignsInSentence(signsCalculator.searchedSigns(input));
         return sentenceStatistics;
     }
 }

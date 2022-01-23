@@ -12,11 +12,12 @@ public class SentenceStatistics {
 
     private String userInput;
     private String revertedSentence;
-    private Long percentageOfSignsInSentence;
+    @ElementCollection
+    private Map<Character,Double> percentageOfSignsInSentence;
     @ElementCollection
     private Map<String, Integer> duplicatedWords;
 
-    public SentenceStatistics(Long id, String userInput, String revertedSentence, Long percentageOfSignsInSentence, Map<String, Integer> duplicatedWords) {
+    public SentenceStatistics(Long id, String userInput, String revertedSentence, Map<Character, Double> percentageOfSignsInSentence, Map<String, Integer> duplicatedWords) {
         this.id = id;
         this.userInput = userInput;
         this.revertedSentence = revertedSentence;
@@ -66,11 +67,11 @@ public class SentenceStatistics {
         this.revertedSentence = revertedSentence;
     }
 
-    public Long getPercentageOfSignsInSentence() {
+    public Map<Character,Double> getPercentageOfSignsInSentence() {
         return percentageOfSignsInSentence;
     }
 
-    public void setPercentageOfSignsInSentence(Long percentageOfSignsInSentence) {
+    public void setPercentageOfSignsInSentence(Map<Character, Double> percentageOfSignsInSentence) {
         this.percentageOfSignsInSentence = percentageOfSignsInSentence;
     }
 
