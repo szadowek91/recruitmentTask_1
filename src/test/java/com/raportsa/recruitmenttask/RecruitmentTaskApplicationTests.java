@@ -1,4 +1,4 @@
-package com.raportSA.zadanierekrutacyjne;
+package com.raportsa.recruitmenttask;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
