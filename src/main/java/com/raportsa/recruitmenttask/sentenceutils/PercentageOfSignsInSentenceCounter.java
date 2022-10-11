@@ -22,7 +22,12 @@ public class PercentageOfSignsInSentenceCounter {
         Map<String, Long> signsAmount = Arrays.stream(input.split(""))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-        signsAmount.forEach((k, v) -> percentageOfSigns.put(k, Math.round((v / inputLength * 100) * 10) / 10.0));
+        signsAmount.forEach((k, v) -> percentageOfSigns.put(k, (Math.round((v / inputLength * 100) * 10) / 10.0)));
+
+//        Map<String, String> stringSigns = Arrays.stream(input.split("")).collect(Collectors.groupingBy(Function.identity(), Collectors.joining()));
+//        stringSigns.forEach((k, v) -> percentageOfSigns.put(k, (Math.round(( Double.parseDouble(v) / inputLength * 100) * 10) / 10.0)));
+
+
 
         return percentageOfSigns.entrySet().stream()
                 .sorted(Map.Entry.<String, Double>comparingByValue().reversed())
